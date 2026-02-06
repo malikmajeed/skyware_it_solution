@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary – Deep Navy: trust, security, enterprise */
+    --color-primary: #0B1C2D;
+    /* Secondary – Steel Blue: corporate, IT infrastructure */
+    --color-secondary: #1F4E79;
+    /* Accent – Electric Cyan: CTAs, links, highlights */
+    --color-accent: #00C2FF;
+    /* Neutrals */
+    --color-neutral-light: #F4F6F8;
+    --color-neutral-dark: #1A1A1A;
+  }
+}
