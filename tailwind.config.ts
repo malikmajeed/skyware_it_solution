@@ -8,8 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-14px)' },
+        },
+      },
+      animation: {
+        'float-slow': 'float 5s ease-in-out infinite',
+        'float-slower': 'float 7s ease-in-out infinite',
+      },
       colors: {
-        primary: "#0B1C2D",      // Deep Navy – trust, security, enterprise
+        primary: "#000000",      // Deep Navy – trust, security, enterprise
         secondary: "#1F4E79",    // Steel Blue – corporate, IT infrastructure
         accent: "#00C2FF",       // Electric Cyan – CTAs, links, highlights
         "neutral-light": "#F4F6F8",

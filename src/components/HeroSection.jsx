@@ -61,6 +61,61 @@ export function HeroSection() {
       <div className="absolute top-0 -right-4 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000" />
       <div className="absolute -bottom-8 left-20 w-96 h-96 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-4000" />
 
+      {/* Floating stars – 4-point, blue & white, some bigger/brighter */}
+      <div className="absolute inset-0 z-20 pointer-events-none" aria-hidden>
+        {/* 4-point star path (corners) */}
+        <div className="absolute top-[15%] left-[10%] w-4 h-4 opacity-70 animate-float-slow">
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-accent">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute top-[22%] right-[12%] w-3.5 h-3.5 opacity-65 animate-float-slower" style={{ animationDelay: '1s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-neutral-light">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute top-[12%] right-[28%] w-2.5 h-2.5 opacity-50 animate-float-slow" style={{ animationDelay: '2s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-accent">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute top-[50%] left-[6%] w-5 h-5 opacity-60 animate-float-slow" style={{ animationDelay: '2.5s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-secondary">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute top-[58%] right-[8%] w-3.5 h-3.5 opacity-70 animate-float-slower" style={{ animationDelay: '0.5s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-neutral-light">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute bottom-[32%] left-[18%] w-2.5 h-2.5 opacity-55 animate-float-slow" style={{ animationDelay: '3s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-accent">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute bottom-[22%] right-[22%] w-4 h-4 opacity-65 animate-float-slower" style={{ animationDelay: '1.5s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-neutral-light">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute top-[38%] left-[15%] w-3 h-3 opacity-60 animate-float-slow" style={{ animationDelay: '0.8s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-accent">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute top-[75%] left-[25%] w-4 h-4 opacity-55 animate-float-slower" style={{ animationDelay: '2s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-secondary">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+        <div className="absolute bottom-[38%] right-[30%] w-2.5 h-2.5 opacity-70 animate-float-slow" style={{ animationDelay: '1.2s' }}>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-neutral-light">
+            <path d="M12 0 L 14.5 9 L 24 12 L 14.5 15 L 12 24 L 9.5 15 L 0 12 L 9.5 9 Z" />
+          </svg>
+        </div>
+      </div>
+
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-20">
         <div className="text-center">
@@ -71,13 +126,13 @@ export function HeroSection() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-neutral-light">Your Partner In</span>
+          <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl mb-6 leading-tight">
+            <span className="text-neutral-light text-5xl">Your Partner In</span>
             <br />
             {/* <span className="text-neutral-light">With </span> */}
             <div className="inline-block h-20 sm:h-24 md:h-28 lg:h-32 align-middle min-w-[2ch]">
               <span className="bg-gradient-to-r from-accent via-[#00C2FF] to-secondary bg-clip-text text-transparent inline-block">
-                {currentWord.slice(0, displayedLength)}
+                AI & Software Services
               </span>
               <span
                 className="inline-block w-0.5 h-[0.85em] bg-accent ml-0.5 align-middle animate-pulse"
@@ -95,12 +150,13 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-            <PrimaryButton icon={ArrowRight} iconPosition="right">
-              Start Your Project
-            </PrimaryButton>
+           
             <SecondaryButton>
               Our Services
             </SecondaryButton>
+            <PrimaryButton icon={ArrowRight} iconPosition="right">
+              Start Your Project
+            </PrimaryButton>
           </div>
 
           {/* Stats */}
