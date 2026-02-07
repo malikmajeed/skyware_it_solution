@@ -171,7 +171,7 @@ export function HeroSection() {
             <div 
               className="
                 text-4xl md:text-5xl font-bold mb-2 
-                bg-gradient-to-br from-accent to-secondary bg-clip-text text-transparent
+                bg-gradient-to-br from-white to-neutral-light/50 bg-clip-text text-transparent
                 will-change-transform
                 transition-transform duration-300
                 group-hover:scale-[1.04]
