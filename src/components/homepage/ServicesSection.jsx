@@ -7,6 +7,7 @@ import {
     Lock,
     Shield,
 } from 'lucide-react';
+import { VscAzure } from 'react-icons/vsc';
 import {
     SiNextdotjs,
     SiReact,
@@ -84,6 +85,7 @@ const techGroups = [
         label: 'Infrastructure & DevOps',
         items: [
             { name: 'AWS', Icon: SiAmazonwebservices, color: '#FF9900' },
+            { name: 'Azure', Icon: VscAzure, color: '#0089D6' },
             { name: 'Google Cloud', Icon: SiGooglecloud, color: '#4285F4' },
             { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
             { name: 'Kubernetes', Icon: SiKubernetes, color: '#326CE5' },
