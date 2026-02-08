@@ -131,7 +131,7 @@ export function HeroSection() {
             <br />
             {/* <span className="text-neutral-light">With </span> */}
             <div className="inline-block h-20 sm:h-24 md:h-28 lg:h-32 align-middle min-w-[2ch]">
-              <span className="bg-gradient-to-r from-accent via-[#00C2FF] to-secondary bg-clip-text text-transparent inline-block">
+              <span className="bg-gradient-to-r from-accent via-[#00C2FF] font-bold to-secondary bg-clip-text text-transparent inline-block">
                 AI & Software Services
               </span>
               <span
@@ -143,7 +143,7 @@ export function HeroSection() {
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-neutral-light/70 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg md:text-lg text-neutral-light max-w-3xl mx-auto mb-12 leading-relaxed">
             Enterprise-grade software solutions powered by cutting-edge technology. 
             From AI-driven automation to scalable cloud infrastructure—we transform your vision into reality.
           </p>
