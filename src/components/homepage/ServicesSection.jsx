@@ -1,18 +1,34 @@
 import {
-    Cpu,
+    BadgeCheck,
     KeyRound,
     Plug,
-    Code,
     Zap,
-    Cloud,
-    Box,
-    Server,
-    Database,
-    Layers,
-    Globe,
+    Brain,
     Lock,
+    Shield,
 } from 'lucide-react';
-
+import {
+    SiNextdotjs,
+    SiReact,
+    SiNodedotjs,
+    SiVuedotjs,
+    SiTypescript,
+    SiFlutter,
+    SiOpenai,
+    SiLangchain,
+    SiPython,
+    SiAmazonwebservices,
+    SiGooglecloud,
+    SiDocker,
+    SiKubernetes,
+    SiGithubactions,
+    SiPostgresql,
+    SiMongodb,
+    SiRedis,
+    SiGraphql,
+    SiApple,
+    SiAndroid,
+} from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const processSteps = [
@@ -33,36 +49,63 @@ const processSteps = [
     },
 ];
 
+// Official brand colors (Simple Icons / brand guidelines)
 const techGroups = [
     {
-        label: 'Frameworks',
+        label: 'Web & Frameworks',
         items: [
-            { name: 'Next.js', Icon: Layers },
-            { name: 'React', Icon: Code },
-            { name: 'Node.js', Icon: Server },
+            { name: 'Next.js', Icon: SiNextdotjs, color: '#FFFFFF' },
+            { name: 'React', Icon: SiReact, color: '#61DAFB' },
+            { name: 'Node.js', Icon: SiNodedotjs, color: '#339933' },
+            { name: 'Vue.js', Icon: SiVuedotjs, color: '#4FC08D' },
+            { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
         ],
     },
     {
-        label: 'Intelligence',
+        label: 'Mobile',
         items: [
-            { name: 'OpenAI', Icon: Cpu },
-            { name: 'LangChain', Icon: Zap },
-            { name: 'Python', Icon: Database },
+            { name: 'Flutter', Icon: SiFlutter, color: '#02569B' },
+            { name: 'React Native', Icon: SiReact, color: '#61DAFB' },
+            { name: 'iOS', Icon: SiApple, color: '#FFFFFF' },
+            { name: 'Android', Icon: SiAndroid, color: '#3DDC84' },
         ],
     },
     {
-        label: 'Infrastructure',
+        label: 'AI & Intelligence',
         items: [
-            { name: 'AWS', Icon: Cloud },
-            { name: 'Google Cloud', Icon: Globe },
-            { name: 'Docker', Icon: Box },
+            { name: 'OpenAI', Icon: SiOpenai, color: '#412991' },
+            { name: 'LangChain', Icon: SiLangchain, color: '#2B7A78' },
+            { name: 'Python', Icon: SiPython, color: '#3776AB' },
+            { name: 'Voice AI', Icon: Zap },
+            { name: 'ML Pipelines', Icon: Brain },
         ],
     },
     {
-        label: 'Hospitality Tech',
+        label: 'Infrastructure & DevOps',
         items: [
+            { name: 'AWS', Icon: SiAmazonwebservices, color: '#FF9900' },
+            { name: 'Google Cloud', Icon: SiGooglecloud, color: '#4285F4' },
+            { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
+            { name: 'Kubernetes', Icon: SiKubernetes, color: '#326CE5' },
+            { name: 'CI/CD', Icon: SiGithubactions, color: '#2088FF' },
+        ],
+    },
+    {
+        label: 'Data & APIs',
+        items: [
+            { name: 'PostgreSQL', Icon: SiPostgresql, color: '#336791' },
+            { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
+            { name: 'Redis', Icon: SiRedis, color: '#DC382D' },
+            { name: 'REST & GraphQL', Icon: SiGraphql, color: '#E10098' },
+        ],
+    },
+    {
+        label: 'Security & Integrations',
+        items: [
+            { name: 'Zero Trust', Icon: Shield },
             { name: 'PMS Integrations', Icon: Plug },
             { name: 'Smart Lock APIs', Icon: KeyRound },
+            { name: 'SSO & Auth', Icon: Lock },
         ],
     },
 ];
@@ -135,40 +178,45 @@ export function ServicesSection() {
                     </div>
                 </div>
 
-                <div>
-
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {techGroups.map((group, groupIndex) => (
-                            <div
-                                key={group.label}
-                                className="rounded-2xl bg-secondary/10 backdrop-blur-sm border border-secondary/30 p-6 hover:border-accent/30 hover:bg-secondary/20 transition-all duration-300 group"
-                                style={{
-                                    animation: `fade-in 0.6s ease-out ${groupIndex * 0.1}s both`,
-                                }}
-                            >
-                                <div className="flex items-center gap-2 mb-5">
-                                    <div className="p-2 rounded-lg bg-accent/10 border border-accent/20">
-                                        <Cpu className="w-5 h-5 text-accent shrink-0" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {techGroups.map((group, groupIndex) => (
+                        <div
+                            key={group.label}
+                            className="relative group"
+                            style={{
+                                animation: `fade-in 0.6s ease-out ${groupIndex * 0.12}s both`,
+                            }}
+                        >
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-2.5 rounded-lg bg-accent/15 border border-accent/30">
+                                        <BadgeCheck className="w-5 h-5 text-accent shrink-0" />
                                     </div>
-                                    <span className="text-sm font-semibold text-accent uppercase tracking-wider">
+                                    <h4 className="text-base font-semibold text-white  capitalize tracking-wider">
                                         {group.label}
-                                    </span>
+                                    </h4>
                                 </div>
-                                <div className="flex flex-col gap-2">
-                                    {group.items.map(({ name, Icon }) => (
-                                        <div
-                                            key={name}
-                                            className="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary/20 border border-secondary/40 text-neutral-light text-sm font-medium hover:border-accent/40 hover:bg-secondary/30 transition-all duration-200 hover:translate-x-1"
-                                        >
-                                            <Icon className="w-5 h-5 text-accent shrink-0" />
-                                            <span>{name}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                                <div className="flex-1 h-px bg-gradient-to-r from-accent/30 to-transparent" />
                             </div>
-                        ))}
-                    </div>
+                            <div className="flex flex-wrap gap-3 pl-0">
+                                {group.items.map(({ name, Icon, color }, itemIndex) => (
+                                    <div
+                                        key={name}
+                                        className="group/item inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl  border border-secondary/60 text-neutral-light text-sm font-medium hover:border-accent/50 hover:from-secondary hover:to-secondary/80 hover:shadow-lg hover:shadow-accent/10 transition-all duration-250"
+                                        style={{
+                                            animation: `fade-in 0.5s ease-out ${groupIndex * 0.12 + itemIndex * 0.05}s both`,
+                                        }}
+                                    >
+                                        <Icon
+                                            className={`w-4 h-4 shrink-0 group-hover/item:scale-110 transition-transform ${!color ? 'text-accent' : ''}`}
+                                            style={color ? { color } : undefined}
+                                        />
+                                        <span>{name}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
