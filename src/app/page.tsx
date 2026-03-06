@@ -1,15 +1,10 @@
 'use client';
-
-import { HeroSection } from '@/components/HeroSection';
-import { InnovationPathSection } from '@/components/homepage/InnovationPathSection';
-import {ServicesSection} from '@/components/homepage/ServicesSection';
+import {HomePage} from '../components/homepage/Index';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <HeroSection />
-      <InnovationPathSection />
-      <ServicesSection />
+ <HomePage />
     </main>
   );
 }
