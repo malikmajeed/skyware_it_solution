@@ -17,7 +17,7 @@ export const SecondaryButton = forwardRef(function SecondaryButton(
       <button
         ref={ref}
         type="button"
-        className={`group relative inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-3 text-base font-medium text-accent bg-transparent border-[3px] border-accent rounded-lg cursor-pointer transition-all duration-300 ease-in-out  hover:bg-accent/10 hover:text-accent ${className}`}
+        className={`group relative inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-3 text-base font-medium text-white bg-transparent border-[1px] border-white hover:border-accent rounded-lg cursor-pointer transition-all duration-300 ease-in-out  hover:bg-accent hover:text-black ${className}`}
         {...props}
       >
         {Icon && iconPosition === 'left' && (

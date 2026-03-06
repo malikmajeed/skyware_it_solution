@@ -40,7 +40,7 @@ export const PrimaryButton = forwardRef(function PrimaryButton(
       <button
         ref={ref}
         type="button"
-        className={`group relative inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-3 text-base font-medium text-primary bg-accent border-[3px] border-accent rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-transparent hover:text-accent hover:shadow-[0_0_25px_rgba(0,194,255,0.55)] ${className}`}
+        className={`group relative inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-3 text-black font-medium  bg-accent border-[2px] border-accent rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-transparent hover:text-white hover:border-white hover:shadow-[0_0_25px_rgba(0,194,255,0.55)] ${className}`}
         {...props}
       >
         {Icon && iconPosition === 'left' && (
