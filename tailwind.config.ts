@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["Urbanist", "var(--font-inter)", "system-ui", "sans-serif"],
       },
       keyframes: {
         float: {
@@ -22,11 +22,10 @@ const config: Config = {
         'float-slower': 'float 7s ease-in-out infinite',
       },
       colors: {
-        primary: "#000000",      // Deep Navy – trust, security, enterprise
-        secondary: "#1F4E79",    // Steel Blue – corporate, IT infrastructure
-        accent: "#00C2FF",       // Electric Cyan – CTAs, links, highlights
-        "neutral-light": "#F4F6F8",
-        "neutral-dark": "#1A1A1A",
+        background: "#000000",      // Deep Navy – trust, security, enterprise
+        primary: "#2A9593",
+        secondary: "#35B5B3",    // Steel Blue – corporate, IT infrastructure
+        accent: "#2A9593"
       },
     },
   },
