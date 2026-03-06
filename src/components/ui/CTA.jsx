@@ -8,7 +8,18 @@ import {PrimaryButton} from '@/components/ui/PrimaryButton'
 
 export function CallToAction() {
     return (
-        <section className="relative py-16 sm:py-25 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden">
+        <section className="relative py-20 sm:py-25 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden">
+           
+            {/* Corner gradient overlays: top-left and bottom-right, center transparent */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: `
+            radial-gradient(ellipse 70% 70% at 0% 0%, rgba(42, 149, 147, 0.25) 0%, transparent 90%),
+            radial-gradient(ellipse 70% 70% at 100% 100%, rgba(42, 149, 147, 0.25) 0%, transparent 90%)
+          `,
+                }}
+            />
             <div className="relative z-10 max-w-7xl mx-auto">
                 <motion.header
                     className="text-center mb-16 sm:mb-20 flex flex-col gap-5"
