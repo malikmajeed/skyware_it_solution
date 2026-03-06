@@ -5,13 +5,15 @@
 @layer base {
   :root {
     /* Primary – Deep Navy: trust, security, enterprise */
-    --color-primary: #0B1C2D;
+    --color-background: #000000;
+
     /* Secondary – Steel Blue: corporate, IT infrastructure */
-    --color-secondary: #1F4E79;
+    --color-secondary: #35B5B3;
     /* Accent – Electric Cyan: CTAs, links, highlights */
-    --color-accent: #00C2FF;
-    /* Neutrals */
-    --color-neutral-light: #F4F6F8;
-    --color-neutral-dark: #1A1A1A;
+    --color-accent: #2A9593;
   }
+}
+
+body {
+  background-color: var(--color-background);
 }
