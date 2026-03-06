@@ -73,7 +73,7 @@ export function InnovationPathSection() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="relative py-24 sm:py-32 px-6 sm:px-12 lg:px-24 bg-primary overflow-hidden">
+    <section className="relative py-24 sm:py-32 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden">
       {/* Subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1F4E79_1px,transparent_1px),linear-gradient(to_bottom,#1F4E79_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none" />
 
