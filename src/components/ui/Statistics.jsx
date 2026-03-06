@@ -4,7 +4,7 @@ export const Statistics = () => {
   return (
     <div className='flex flex-row items-center justify-center'>
             {/* Stats */}
-       <div className="max-w-5xl items-center grid grid-cols-2 md:grid-cols-4 gap-8 py-10  select-none">
+       <div className="max-w-5xl items-center grid grid-cols-2 md:grid-cols-4 gap-8 py-14  select-none">
         {[
           { value: "399+", label: "Global Clients" },
           { value: "500+", label: "Projects Delivered" },

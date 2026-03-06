@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import SecondaryButton from '@/components/ui/SecondaryButton';
 import { useState, useEffect } from 'react';
