@@ -139,12 +139,12 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-          <PrimaryButton icon={ArrowRight} iconPosition="right">
+          <PrimaryButton icon={ArrowRight} iconPosition="right" href="/contact">
               Get a Free Strategy Session
-            </PrimaryButton>
-            <SecondaryButton>
+          </PrimaryButton>
+          <SecondaryButton href="/services">
               Our Services
-            </SecondaryButton>
+          </SecondaryButton>
            
           </div>
 
