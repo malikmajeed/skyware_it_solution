@@ -1,6 +1,7 @@
 'use client';
 
 import { forwardRef } from 'react';
+import Link from 'next/link';
 
 const starSvgProps = {
   xmlns: 'http://www.w3.org/2000/svg',
@@ -25,47 +26,70 @@ const starConfigs = [
   { w: 'w-[5px]', top: 'top-[5%]', left: 'left-[50%]', hoverTop: 'group-hover:top-[5%]', hoverLeft: 'group-hover:left-[60%]', duration: 'duration-[800ms]' },
 ];
 
+const buttonClassName = 'group relative inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-3 text-black font-medium bg-accent border-[2px] border-accent rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-transparent hover:text-white hover:border-white hover:shadow-[0_0_25px_rgba(0,194,255,0.55)]';
+
 export const PrimaryButton = forwardRef(function PrimaryButton(
   {
     children,
     icon: Icon,
     iconPosition = 'right',
     className = '',
+    href,
     ...props
   },
   ref
 ) {
+  const content = (
+    <>
+      {Icon && iconPosition === 'left' && (
+        <span className="inline-flex shrink-0">
+          <Icon className="w-5 h-5" />
+        </span>
+      )}
+      <span>{children}</span>
+      {Icon && iconPosition === 'right' && (
+        <span className="inline-flex shrink-0 transition-transform group-hover:translate-x-1">
+          <Icon className="w-5 h-5" />
+        </span>
+      )}
+      {starConfigs.map((star, i) => (
+        <div
+          key={i}
+          aria-hidden
+          className={`absolute pointer-events-none -z-[5] group-hover:z-[2] transition-all ease-out ${star.duration} ${star.w} ${star.top} ${star.left} ${star.hoverTop} ${star.hoverLeft} drop-shadow-[0_0_0_#F4F6F8] group-hover:drop-shadow-[0_0_10px_#F4F6F8]`}
+        >
+          <svg {...starSvgProps}>
+            <g><StarPath /></g>
+          </svg>
+        </div>
+      ))}
+    </>
+  );
+
+  if (href) {
+    return (
+      <div className="inline-block">
+        <Link
+          ref={ref}
+          href={href}
+          className={`${buttonClassName} ${className}`}
+          {...props}
+        >
+          {content}
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="inline-block">
       <button
         ref={ref}
         type="button"
-        className={`group relative inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-3 text-black font-medium  bg-accent border-[2px] border-accent rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-transparent hover:text-white hover:border-white hover:shadow-[0_0_25px_rgba(0,194,255,0.55)] ${className}`}
+        className={`${buttonClassName} ${className}`}
         {...props}
       >
-        {Icon && iconPosition === 'left' && (
-          <span className="inline-flex shrink-0">
-            <Icon className="w-5 h-5" />
-          </span>
-        )}
-        <span>{children}</span>
-        {Icon && iconPosition === 'right' && (
-          <span className="inline-flex shrink-0 transition-transform group-hover:translate-x-1">
-            <Icon className="w-5 h-5" />
-          </span>
-        )}
-
-        {starConfigs.map((star, i) => (
-          <div
-            key={i}
-            aria-hidden
-            className={`absolute pointer-events-none -z-[5] group-hover:z-[2] transition-all ease-out ${star.duration} ${star.w} ${star.top} ${star.left} ${star.hoverTop} ${star.hoverLeft} drop-shadow-[0_0_0_#F4F6F8] group-hover:drop-shadow-[0_0_10px_#F4F6F8]`}
-          >
-            <svg {...starSvgProps}>
-              <g><StarPath /></g>
-            </svg>
-          </div>
-        ))}
+        {content}
       </button>
     </div>
   );
