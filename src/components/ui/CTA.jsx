@@ -1,6 +1,6 @@
 'use client';
 import { ArrowRight } from 'lucide-react';
-
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {PrimaryButton} from '@/components/ui/PrimaryButton'
 
@@ -43,7 +43,7 @@ export function CallToAction() {
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ duration: 0.5, staggerChildren: 0.05 }}
                 >
-                    <PrimaryButton icon={ArrowRight} iconPosition="right">
+                    <PrimaryButton icon={ArrowRight} href="/contact" iconPosition="right">
                         Start Your Project Today
                     </PrimaryButton>
                   

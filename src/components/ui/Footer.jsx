@@ -64,10 +64,9 @@ export function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
                     {/* Brand column */}
                     <div className="lg:col-span-1">
-                        <div className="font-bold text-xl text-white">skyware</div>
-                        <div className="text-xs text-neutral-500 uppercase tracking-wider mt-0.5">
-                            IT SOLUTIONS
-                        </div>
+                    <Link href="/" className="flex flex-col gap-0.5">
+           <img src="/Skyware It solutions pvt ltd logo.png" alt="Skyware It solutions pvt ltd logo"  />
+          </Link>
                         <p className="mt-4 text-neutral-400 text-sm leading-relaxed">
                             Future-proofing your business with intelligent IT solutions. From web development to IoT ecosystems, we deliver excellence.
                         </p>
