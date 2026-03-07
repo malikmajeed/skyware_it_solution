@@ -31,8 +31,13 @@ const socials = [
 
 export function Footer() {
     return (
-        <footer className="bg-black text-white">
-            <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-16 sm:py-20">
+        <footer className="relative bg-black text-white overflow-hidden">
+            {/* Gradient overlay: transparent → accent → transparent */}
+            <div
+                className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-accent/25 to-transparent"
+                aria-hidden
+            />
+            <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-16 sm:py-20">
                 {/* Newsletter */}
                 <div className="rounded-2xl border border-neutral-600/80 bg-neutral-900/60 p-8 sm:p-10 mb-16 sm:mb-20">
                     <h3 className="text-2xl sm:text-3xl  text-white">
@@ -138,7 +143,7 @@ export function Footer() {
             </div>
 
             {/* Bottom bar */}
-            <div className="border-t border-neutral-800">
+            <div className="relative z-10 border-t border-neutral-800">
                 <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
                     <span>© 2026 Skyware IT Solutions. All rights reserved.</span>
                     <span>
