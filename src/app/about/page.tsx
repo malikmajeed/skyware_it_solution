@@ -2,65 +2,77 @@
 
 import {
     Users,
-    Briefcase,
+    Target,
     TrendingUp,
     Heart,
-    Lightbulb,
-    Handshake,
+    Eye,
+
     Gauge,
-    Target,
+    Award,
     ArrowRight,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PageHeroSection } from '@/components/ui/PageHeroSection';
 
-const stats = [
+// Stat cards: bottom-left (Client Satisfaction) is teal
+const statCards = [
     { value: '25+', label: 'Team Members', Icon: Users },
-    { value: '100+', label: 'Projects Completed', Icon: Briefcase },
-    { value: '78%', label: 'Client Satisfaction', Icon: TrendingUp },
-    { value: '12', label: 'Years in business', Icon: Heart },
+    { value: '100+', label: 'Projects Delivered', Icon: Target },
+    { value: '98%', label: 'Client Satisfaction', Icon: TrendingUp, teal: true },
+    { value: '12+', label: 'Years in Business', Icon: Heart },
 ];
-
-const expertiseTags = ['Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & ML'];
 
 const coreValues = [
-    {
-        title: 'Transparency',
-        description: 'We believe in open communication and clear processes. You always know where your project stands.',
-        Icon: Handshake,
-    },
-    {
-        title: 'Agility',
-        description: 'We adapt to change quickly. Our flexible approach ensures we deliver results even when requirements evolve.',
-        Icon: Gauge,
-    },
-    {
-        title: 'Innovation',
-        description: 'We stay ahead of the curve with cutting-edge tools and practices to future-proof your solutions.',
-        Icon: Target,
-    },
+    { title: 'Transparency', description: "No hidden costs, no technical 'magic.' We believe in honest communication and clear pricing.", Icon: Eye },
+    { title: 'Agility', description: 'We pivot as fast as the market moves. Adaptable solutions for a changing world.', Icon: Gauge, teal: true },
+    { title: 'Excellence', description: "If it's not industry-leading, it's not Skyware. We set the bar high and deliver beyond it.", Icon: Award },
 ];
 
-const timeline = [
-    { year: '2023', text: 'Launched Skyware Labs and expanded our AI and IoT offerings.' },
-    { year: '2021', text: 'Celebrated our first 50 successful projects and opened a second office.' },
-    { year: '2020', text: 'Expanded services to include cloud migration and digital transformation.' },
-    { year: '2018', text: 'Opened our first international office and grew the team to 15.' },
+const evolutionSteps = [
+    { step: '01', title: 'Share Your Vision', description: 'Tell us your goals and challenges. We listen, ask the right questions, and align on a clear direction—so your idea becomes a shared roadmap.', image: '/about/step-01.jpg' },
+    { step: '02', title: 'Get Your Blueprint', description: 'We translate your vision into a detailed technical blueprint: architecture, UX flows, and a phased plan that fits your timeline and budget.', image: '/about/step-02.jpg' },
+    { step: '03', title: 'We Build & Iterate', description: 'Our team brings the blueprint to life with modern tech and agile sprints. You get early demos, feedback loops, and a product that evolves with you.', image: '/about/step-03.jpg' },
+    { step: '04', title: 'You Scale With Confidence', description: 'We hand over a production-ready solution with documentation and support. You launch, grow, and iterate with a partner who stays by your side.', image: '/about/step-04.jpg' },
 ];
 
 export default function AboutPage() {
     return (
         <main className="min-h-screen bg-black text-white">
-            <PageHeroSection>
+            <PageHeroSection contentClassName="max-w-3xl flex flex-col gap-10">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
-                    We Build Tech That <br /><span className="text-primary">Empowers People</span>
+                    We Build Tech That <span className="text-primary font-bold"> <br />Empowers People</span>
                 </h1>
-                <p className="text-white/70 text-lg">
-                    At Skyware, we don't just write code; we solve problems. Born from a passion for innovation, we've spent years helping businesses navigate the shifting digital landscape.
+                <p className="text-neutral-400 text-lg sm:text-xl leading-relaxed">
+                    A visionary tech firm, crafting innovative solutions and experiences for our clients to thrive in the digital age.
                 </p>
+                {/* Hero image cluster – add your images to public/about/ (e.g. hero-collab.jpg, hero-development.jpg, hero-digital.jpg) */}
+
             </PageHeroSection>
 
-            {/* Our Story */}
+            <section className="px-4 sm:px-0">
+                <div className="grid grid-cols-3 gap-1 sm:gap-3 mt-10 w-full max-w-4xl mx-auto">
+                    {[
+                        {
+                            alt: 'Team collaboration and brainstorming',
+                            src: '/images/team planning.jpg'
+                        },
+                        {
+                            alt: 'Software development',
+                            src: '/images/person coding.jpg'
+                        },
+                        {
+                            alt: 'Digital solutions and touch interfaces',
+                            src: '/images/kiosk scanning.jpg'
+                        },
+                    ].map((item, i) => (
+                        <div key={i} className="relative aspect-square sm:aspect-[3/4] rounded-sm overflow-hidden border border-neutral-700 bg-neutral-800/80">
+                            <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Making Technology Your Biggest Advantage */}
             <section className="relative py-20 sm:py-24 px-6 sm:px-12 lg:px-24 overflow-hidden">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-10"
@@ -70,62 +82,42 @@ export default function AboutPage() {
                     }}
                 />
                 <div className="relative z-10 max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-                        <div>
-                            <p className="text-neutral-500 text-sm uppercase tracking-wider">Our Mission</p>
-                            <h2 className="mt-2 text-3xl sm:text-4xl  text-white">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                        {/* Left column: 4 stat cards in 2x2 */}
+                        <div className="grid grid-cols-2 gap-4">
+                            {statCards.map(({ value, label, Icon, teal }) => (
+                                <motion.article
+                                    key={label}
+                                    className={`rounded-2xl p-6 ${teal ? 'bg-primary text-white' : 'border border-neutral-700 bg-neutral-900/50'}`}
+                                    initial={{ opacity: 0, y: 16 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <Icon className={`w-8 h-8 ${teal ? 'text-white' : 'text-primary'}`} />
+                                    <p className={`mt-3 text-2xl sm:text-3xl ${teal ? 'text-white' : 'text-primary'}`}>{value}</p>
+                                    <p className={`mt-1 text-sm ${teal ? 'text-white/90' : 'text-neutral-400'}`}>{label}</p>
+                                </motion.article>
+                            ))}
+                        </div>
+                        {/* Right column: OUR MISSION + heading + paragraphs */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <p className="text-primary text-xs font-semibold uppercase tracking-wider">Our Mission</p>
+                            <h2 className="mt-2 text-3xl sm:text-4xl lg:text-4xl text-white leading-tight">
                                 Making Technology Your Biggest Advantage
                             </h2>
                             <p className="mt-6 text-neutral-400 leading-relaxed">
-                                We are a team of engineers, designers, and strategists who believe technology should work for people—not the other way around. From day one, we have focused on delivering solutions that are both powerful and intuitive.
+                                Our team is a mix of dreamers and doers—dedicated to making technology your biggest competitive advantage. We believe that the right technology can transform businesses, streamline operations, and create unforgettable customer experiences.
                             </p>
                             <p className="mt-4 text-neutral-400 leading-relaxed">
-                                Our clients range from startups to enterprises. What unites them is the need for a partner who can translate complex requirements into reliable, scalable systems.
+                                From startups to enterprises, we partner with organizations that aren&apos;t afraid to innovate. We&apos;re not just service providers; we&apos;re collaborators invested in your success.
                             </p>
-                            <div className="mt-10 grid grid-cols-2 gap-4">
-                                {stats.map(({ value, label, Icon }) => (
-                                    <div
-                                        key={label}
-                                        className="rounded-xl border border-neutral-700 bg-neutral-900/50 p-5"
-                                    >
-                                        <Icon className="w-6 h-6 text-primary" />
-                                        <p className="mt-2 text-2xl  text-white">{value}</p>
-                                        <p className="text-sm text-neutral-400">{label}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div>
-                            <div className="relative rounded-2xl border border-neutral-700 bg-neutral-900/50 p-8">
-                                {/* Corner gradient overlays: top-left and bottom-right, center transparent */}
-                                <div
-                                    className="absolute inset-0 pointer-events-none"
-                                    style={{
-                                        background: `
-            radial-gradient(ellipse 70% 70% at 0% 0%, rgba(42, 149, 147, 0.25) 0%, transparent 90%),
-            radial-gradient(ellipse 70% 70% at 100% 100%, rgba(42, 149, 147, 0.25) 0%, transparent 90%)
-          `,
-                                    }}
-                                />
-                                <Lightbulb className="w-10 h-10 text-primary" />
-                                <h3 className="mt-4 text-xl font-semibold text-white">Innovation First</h3>
-                                <p className="mt-3 text-neutral-400 leading-relaxed">
-                                    We are dedicated to revolutionizing the way businesses leverage technology. By combining deep technical expertise with a human-centered approach, we build systems that drive growth, efficiency, and long-term success for our clients.
-                                </p>
-
-                                <div className="mt-6 flex flex-wrap gap-3">
-                                    {expertiseTags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="rounded-full border border-neutral-600 px-4 py-2 text-sm text-white"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -149,68 +141,95 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h2 className="text-3xl sm:text-4xl  text-white">
+                        <h2 className="mt-2 text-3xl sm:text-4xl lg:text-4xl text-white leading-tight">
                             Our Core <span className="text-primary">Values</span>
                         </h2>
-                        <p className="mt-3 text-neutral-400 text-lg">The human element that sets us apart</p>
+                        <p className="mt-3 text-neutral-400 text-lg">The principles that guide everything we do</p>
                     </motion.header>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {coreValues.map(({ title, description, Icon }) => (
+                        {coreValues.map(({ title, description, Icon, teal }) => (
                             <motion.article
                                 key={title}
-                                className="rounded-2xl border border-neutral-700 bg-neutral-900/50 p-8 text-center"
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                className={`rounded-xl p-8 text-start ${teal ? 'bg-primary text-white' : ' border border-neutral-700 bg-accent/15'}`}
+                                initial={{ opacity: 0, y: 16, rotate: teal ? -5 : 0 }}
+                                whileInView={{ opacity: 1, y: 0, rotate: teal ? -5 : 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4 }}
                             >
-                                <Icon className="w-12 h-12 text-primary mx-auto" />
-                                <h3 className="mt-4 text-xl font-semibold text-white">{title}</h3>
-                                <p className="mt-3 text-neutral-400 text-sm leading-relaxed">{description}</p>
+                                <div className={`inline-flex p-2.5 rounded-lg ${teal ? 'bg-black ' : 'bg-secondary'}`}>
+                                    <Icon className={`w-8 h-8 text-white`} />
+                                </div>
+                                <h3 className={`mt-4 text-2xl ${teal ? 'text-black' : 'text-primary'}`}>{title}</h3>
+                                <p className={`mt-3 text-sm leading-relaxed ${teal ? 'text-black' : 'text-neutral-400'}`}>
+                                    {description}
+                                </p>
                             </motion.article>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Our Journey */}
+            {/* Your Digital Evolution in Four Steps */}
             <section className="relative py-20 sm:py-24 px-6 sm:px-12 lg:px-24 overflow-hidden">
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <motion.header
-                        className="text-center mb-16"
+                        className="text-center mb-14"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h2 className="text-3xl sm:text-4xl  text-white">Our Journey</h2>
-                        <p className="mt-3 text-neutral-400 text-lg">A timeline of our growth and milestones</p>
+                        <h2 className="text-3xl sm:text-4xl text-white">
+                            Your Digital Evolution in <span className="text-primary">Four Steps</span>
+                        </h2>
+                        <p className="mt-3 text-neutral-400 text-lg">Moving your business from concept to code, and beyond.</p>
                     </motion.header>
-                    <div className="relative">
-                        {/* Vertical line */}
-                        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-neutral-700 -translate-x-1/2" />
-                        <ul className="space-y-12">
-                            {timeline.map((item, index) => (
-                                <motion.li
-                                    key={item.year}
-                                    className={`relative flex items-center gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.4 }}
-                                >
-                                    <div className="absolute left-1/2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 z-10" />
-                                    <div className={`flex-1 ${index % 2 === 0 ? 'text-right pr-12' : 'text-left pl-12'}`}>
-                                        <div className="rounded-xl border border-neutral-700 bg-neutral-900/50 p-6 inline-block max-w-md">
-                                            <span className="text-primary font-semibold">{item.year}</span>
-                                            <p className="mt-2 text-neutral-300 text-sm">{item.text}</p>
-                                        </div>
+                    <ul className="space-y-4">
+                        {evolutionSteps.map(({ step, title, description, image }, index) => (
+                            <motion.li
+                                key={step}
+                                className="relative rounded-2xl border border-neutral-600/80 bg-neutral-900/80 overflow-hidden min-h-[140px] sm:min-h-[160px]"
+                                initial={{ opacity: 0, x: -16 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                            >
+                                {/* Optional background image – add step-01.jpg … step-04.jpg to public/about/ */}
+                                {image && (
+                                    <div className="absolute inset-0">
+                                        <img
+                                            src={image}
+                                            alt=""
+                                            className="absolute inset-0 w-full h-full object-cover opacity-20"
+                                            aria-hidden
+                                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                                        />
+                                        <div className="absolute inset-0 bg-neutral-900/85" aria-hidden />
                                     </div>
-                                    <div className="flex-1" />
-                                </motion.li>
-                            ))}
-                        </ul>
-                    </div>
+                                )}
+                                <div className="relative px-6 grid grid-cols-8 gap-10 items-stretch">
+
+                                    {/* Step number container */}
+                                    <div className="col-span-2 flex items-end justify-center shrink-0 w-28 sm:w-36 pl-4 sm:pl-6 ">
+                                        <span
+                                            className="text-9xl sm:text-9xl md:text-9xl font-extrabold text-white/15 select-none translate-y-[35%]"
+                                            aria-hidden
+                                        >
+                                            {step}
+                                        </span>
+                                    </div>
+
+                                    <div className="col-span-6 py-6 sm:py-8 pr-6 sm:pr-8 pl-0">
+                                        <h3 className="text-xl sm:text-2xl font-semibold text-white">{title}</h3>
+                                        <p className="mt-2 text-neutral-400 text-sm sm:text-base leading-relaxed">
+                                            {description}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </motion.li>
+                        ))}
+                    </ul>
                 </div>
             </section>
 
