@@ -6,9 +6,9 @@ export const Statistics = () => {
             {/* Stats */}
        <div className="max-w-5xl items-center grid grid-cols-2 md:grid-cols-4 gap-8 py-14  select-none">
         {[
-          { value: "399+", label: "Global Clients" },
-          { value: "500+", label: "Projects Delivered" },
-          { value: "15+", label: "Years of Excellence" },
+          { value: "10+", label: "Global Clients" },
+          { value: "6+", label: "Projects Delivered" },
+          { value: "3+", label: "Years of Excellence" },
           { value: "24/7", label: "Suppport Available" },
         ].map((stat) => (
           <div key={stat.label} className="text-center group min-w-[0]">

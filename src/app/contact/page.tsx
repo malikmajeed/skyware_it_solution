@@ -1,8 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PageHeroSection } from '@/components/ui/PageHeroSection';
+
+const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || '';
 
 const contactCards = [
   {
@@ -28,6 +31,43 @@ const contactCards = [
 ];
 
 export default function ContactPage() {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!CONTACT_FORM_URL) {
+      setSubmitError('Contact form is not configured. Please email us directly.');
+      setSubmitStatus('error');
+      return;
+    }
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setSubmitting(true);
+    setSubmitStatus('idle');
+    setSubmitError('');
+    try {
+      const res = await fetch(CONTACT_FORM_URL, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data.success) {
+        setSubmitStatus('success');
+        form.reset();
+      } else {
+        setSubmitStatus('error');
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setSubmitStatus('error');
+      setSubmitError('Network error. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-black text-white">
       <PageHeroSection contentClassName="max-w-3xl flex flex-col gap-6 items-center text-center">
@@ -110,8 +150,14 @@ export default function ContactPage() {
           >
             <form
               className="space-y-6"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
             >
+              {submitStatus === 'success' && (
+                <p className="text-primary text-sm">Thanks! We&apos;ll get back to you within 24 hours.</p>
+              )}
+              {submitStatus === 'error' && submitError && (
+                <p className="text-red-400 text-sm">{submitError}</p>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="full-name" className="block text-sm text-white font-normal mb-2">
@@ -119,9 +165,11 @@ export default function ContactPage() {
                   </label>
                   <input
                     id="full-name"
+                    name="full-name"
                     type="text"
                     placeholder="John Doe"
                     className="w-full rounded-lg border border-neutral-600 bg-neutral-800/80 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    disabled={submitting}
                   />
                 </div>
                 <div>
@@ -130,9 +178,12 @@ export default function ContactPage() {
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="john@example.com"
+                    required
                     className="w-full rounded-lg border border-neutral-600 bg-neutral-800/80 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    disabled={submitting}
                   />
                 </div>
               </div>
@@ -142,9 +193,11 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="subject"
+                  name="subject"
                   type="text"
                   placeholder="What's this about?"
                   className="w-full rounded-lg border border-neutral-600 bg-neutral-800/80 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  disabled={submitting}
                 />
               </div>
               <div>
@@ -153,17 +206,20 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   placeholder="Describe your project or inquiry"
                   className="w-full rounded-lg border border-neutral-600 bg-neutral-800/80 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-y min-h-[120px]"
+                  disabled={submitting}
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 font-normal text-white transition-colors hover:bg-primary/90"
+                disabled={submitting}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 font-normal text-white transition-colors hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message
-                <ArrowRight className="w-5 h-5" />
+                {submitting ? 'Sending…' : 'Send Message'}
+                {!submitting && <ArrowRight className="w-5 h-5" />}
               </button>
             </form>
           </motion.div>
