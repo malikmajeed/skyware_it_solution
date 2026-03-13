@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PageHeroSection } from '@/components/ui/PageHeroSection';
 
-const CONTACT_FORM_API = '/api/contact';
+const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || '';
 
 const contactCards = [
   {
@@ -37,13 +37,18 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!CONTACT_FORM_URL) {
+      setSubmitStatus('error');
+      setSubmitError('Contact form is not configured. Please email us at info@skywareit.com.');
+      return;
+    }
     const form = e.currentTarget;
     const formData = new FormData(form);
     setSubmitting(true);
     setSubmitStatus('idle');
     setSubmitError('');
     try {
-      const res = await fetch(CONTACT_FORM_API, {
+      const res = await fetch(CONTACT_FORM_URL, {
         method: 'POST',
         body: formData,
       });
@@ -57,7 +62,7 @@ export default function ContactPage() {
       }
     } catch {
       setSubmitStatus('error');
-      setSubmitError('Network error. Please try again or email us directly.');
+      setSubmitError('Network error. Please try again or email us at info@skywareit.com.');
     } finally {
       setSubmitting(false);
     }

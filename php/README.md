@@ -15,13 +15,15 @@ Sends the website contact form to **info@skywareit.com** via SMTP (skywareit.com
    - Set `MAIL_USERNAME` and `MAIL_PASSWORD` (e.g. info@skywareit.com and its password or app password).
    - Other values are pre-filled from your server details (skywareit.com, port 465, SSL).
 
-3. **Frontend (Next.js)**  
-   The contact form posts to **`/api/contact`** (same origin). That API route forwards to this PHP script.  
-   In the project root `.env.local` (or `.env`), set the **server-side** URL of this script (no `NEXT_PUBLIC_`):
+3. **Deploy to hosting root**  
+   Upload `send-contact.php`, the `vendor/` folder (after `composer install`), and `php/.env` to your **hosting root** (e.g. `public_html/` on Namecheap). So the script is at `https://yourdomain.com/send-contact.php`.
+
+4. **Frontend (static / no-Node hosting)**  
+   The contact form POSTs **directly** to this PHP URL. Before building the static site, set in the project root `.env` or `.env.local`:
    ```env
-   CONTACT_FORM_URL=https://your-domain.com/php/send-contact.php
+   NEXT_PUBLIC_CONTACT_FORM_URL=https://yourdomain.com/send-contact.php
    ```
-   Replace `your-domain.com` with where you host the PHP (e.g. skywareit.com). The build has no client-side dependency on this; routing works with the built app.
+   Replace `yourdomain.com` with your real domain (e.g. skywareit.com). Then run `npm run build`; the value is baked into the static output.
 
 ## Server details (from your .env)
 

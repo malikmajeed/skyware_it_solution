@@ -29,10 +29,10 @@ const coreValues = [
 ];
 
 const evolutionSteps = [
-    { step: '01', title: 'Share Your Vision', description: 'Tell us your goals and challenges. We listen, ask the right questions, and align on a clear direction—so your idea becomes a shared roadmap.', image: '/about/step-01.jpg' },
-    { step: '02', title: 'Get Your Blueprint', description: 'We translate your vision into a detailed technical blueprint: architecture, UX flows, and a phased plan that fits your timeline and budget.', image: '/about/step-02.jpg' },
-    { step: '03', title: 'We Build & Iterate', description: 'Our team brings the blueprint to life with modern tech and agile sprints. You get early demos, feedback loops, and a product that evolves with you.', image: '/about/step-03.jpg' },
-    { step: '04', title: 'You Scale With Confidence', description: 'We hand over a production-ready solution with documentation and support. You launch, grow, and iterate with a partner who stays by your side.', image: '/about/step-04.jpg' },
+    { step: '01', title: 'Share Your Vision', description: 'Tell us your goals and challenges. We listen, ask the right questions, and align on a clear direction—so your idea becomes a shared roadmap.', image: '' },
+    { step: '02', title: 'Get Your Blueprint', description: 'We translate your vision into a detailed technical blueprint: architecture, UX flows, and a phased plan that fits your timeline and budget.', image: '' },
+    { step: '03', title: 'We Build & Iterate', description: 'Our team brings the blueprint to life with modern tech and agile sprints. You get early demos, feedback loops, and a product that evolves with you.', image: '' },
+    { step: '04', title: 'You Scale With Confidence', description: 'We hand over a production-ready solution with documentation and support. You launch, grow, and iterate with a partner who stays by your side.', image: '' },
 ];
 
 export default function AboutPage() {
