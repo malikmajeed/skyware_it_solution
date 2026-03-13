@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PageHeroSection } from '@/components/ui/PageHeroSection';
 
-const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || '';
+const CONTACT_FORM_API = '/api/contact';
 
 const contactCards = [
   {
@@ -37,18 +37,13 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!CONTACT_FORM_URL) {
-      setSubmitError('Contact form is not configured. Please email us directly.');
-      setSubmitStatus('error');
-      return;
-    }
     const form = e.currentTarget;
     const formData = new FormData(form);
     setSubmitting(true);
     setSubmitStatus('idle');
     setSubmitError('');
     try {
-      const res = await fetch(CONTACT_FORM_URL, {
+      const res = await fetch(CONTACT_FORM_API, {
         method: 'POST',
         body: formData,
       });

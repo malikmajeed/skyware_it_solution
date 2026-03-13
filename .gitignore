@@ -13,7 +13,8 @@
 
 # production
 /build
-
+ */env/*
+ php/.env
 # misc
 .DS_Store
 *.pem
