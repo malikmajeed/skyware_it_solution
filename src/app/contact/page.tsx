@@ -8,22 +8,22 @@ const contactCards = [
   {
     title: 'Email Us',
     Icon: Mail,
-    lines: ['info@skywareit.com', 'career@skywareit.com'],
+    lines: ['info@skywareit.com'],
   },
   {
     title: 'Call Us',
     Icon: Phone,
-    lines: ['+1 (000) 123-4567', '+1 (000) 123-4560'],
+    lines: ['+1 (307) 922-0592'],
   },
   {
-    title: 'Visit Us',
+    title: 'Registered Office',
     Icon: MapPin,
-    lines: ['123 Innovation Street', 'SDH, US, CA 90020'],
+    lines: ['30 N Gould St. Sheridan, WY 82801'],
   },
   {
     title: 'Working Hours',
     Icon: Clock,
-    lines: ['Mon - Fri 9:00 AM - 5:00 PM', 'Weekend by Appointment'],
+    lines: ['24/7 Support Service Available'],
   },
 ];
 

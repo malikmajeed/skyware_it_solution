@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Linkedin, Twitter, Github, Mail } from 'lucide-react';
+import { ArrowRight, Linkedin, Twitter, Facebook, Mail } from 'lucide-react';
 
 const companyLinks = [
     { label: 'About Us', href: '/about' },
@@ -23,10 +23,10 @@ const legalLinks = [
 ];
 
 const socials = [
-    { label: 'LinkedIn', href: '#', Icon: Linkedin },
-    { label: 'Twitter', href: '#', Icon: Twitter },
-    { label: 'GitHub', href: '#', Icon: Github },
-    { label: 'Email', href: 'mailto:hello@skyware.com', Icon: Mail },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/skyware-it-solutions-private-limited/', Icon: Linkedin },
+    // { label: 'Twitter', href: '#', Icon: Twitter },
+    { label: 'Facebook', href: 'https://www.facebook.com/people/Skyware-It-Solutions/61584685156016/', Icon: Facebook },
+    { label: 'Email', href: 'mailto:info@skywareit.com', Icon: Mail },
 ];
 
 export function Footer() {
