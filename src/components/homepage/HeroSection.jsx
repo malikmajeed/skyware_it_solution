@@ -1,61 +1,39 @@
+'use client';
+
+import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import PrimaryButton from '@/components/ui/PrimaryButton';
 import SecondaryButton from '@/components/ui/SecondaryButton';
-import { useState, useEffect } from 'react';
 
-const services = [
-  'AI Automations',
-  'Hospitality Solutions',
-  'Web Applications',
-  'Mobile Applications',
-  'IoT Services'
-];
-
-const TYPING_SPEED_MS = 80;
-const DELETING_SPEED_MS = 50;
-const PAUSE_AT_END_MS = 2000;
+const VIDEO_SRC = '/skyware it solutions bg video.mp4';
+const FALLBACK_IMAGE = '/background-hero-section.jpg';
 
 export function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [displayedLength, setDisplayedLength] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const currentWord = services[currentIndex];
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    const speed = isDeleting ? DELETING_SPEED_MS : TYPING_SPEED_MS;
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayedLength < currentWord.length) {
-          setDisplayedLength((prev) => prev + 1);
-        } else {
-          setIsPaused(true);
-          setTimeout(() => {
-            setIsDeleting(true);
-            setIsPaused(false);
-          }, PAUSE_AT_END_MS);
-        }
-      } else {
-        if (displayedLength > 0) {
-          setDisplayedLength((prev) => prev - 1);
-        } else {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % services.length);
-        }
-      }
-    }, isPaused ? PAUSE_AT_END_MS : speed);
-
-    return () => clearTimeout(timer);
-  }, [displayedLength, isDeleting, isPaused, currentWord.length, currentIndex]);
+  const [videoError, setVideoError] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-    
-      <img src="./background-hero-section.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        {/* Grid pattern overlay */}
+      {/* Background: video with image fallback */}
+      {!videoError ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={FALLBACK_IMAGE}
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={() => setVideoError(true)}
+        >
+          <source src={VIDEO_SRC} type="video/mp4" />
+        </video>
+      ) : null}
+      <img
+        src={FALLBACK_IMAGE}
+        alt=""
+        className={`absolute inset-0 w-full h-full object-cover ${videoError ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        aria-hidden={!videoError}
+      />
+      {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-black/70" />
       
       {/* Floating stars – 4-point, blue & white, some bigger/brighter */}
@@ -120,12 +98,12 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl">
-            <span className="text-white font-bold ">Future-Proofing Your <br /> Business With</span>
+            <span className="text-white font-bold ">Powering Businesses <br /> With</span>
             <br />
             {/* <span className="text-neutral-light">With </span> */}
             <div className="">
               <span className="bg-gradient-to-b from-primary via-secondary font-bold to-primary bg-clip-text text-transparent inline-block">
-              Intelligent IT Solutions
+              Smart Digital Solutions
               </span>
              
             </div>

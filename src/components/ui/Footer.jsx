@@ -146,9 +146,7 @@ export function Footer() {
             <div className="relative z-10 border-t border-neutral-800">
                 <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
                     <span>© 2026 Skyware IT Solutions. All rights reserved.</span>
-                    <span>
-                        Built with <span className="text-red-500" aria-hidden>❤️</span> for innovation.
-                    </span>
+                   
                 </div>
             </div>
         </footer>

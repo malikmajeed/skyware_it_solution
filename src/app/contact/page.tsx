@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PageHeroSection } from '@/components/ui/PageHeroSection';
+import { ul } from 'framer-motion/client';
 
-const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || '';
+const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || 'https://skywareit.com/backend';
 
 const contactCards = [
   {
@@ -16,12 +17,12 @@ const contactCards = [
   {
     title: 'Call Us',
     Icon: Phone,
-    lines: ['+1 (307) 922-0592'],
+    lines: ['+1 (307) 922-0592', '+92 (330) 769-3693'],
   },
   {
-    title: 'Registered Office',
+    title: 'Offices',
     Icon: MapPin,
-    lines: ['30 N Gould St. Sheridan, WY 82801'],
+    lines: ['30 N Gould St. Sheridan, WY 82801', 'Office 215, Uhad Tower Phase 3 Chowk, University Road, Peshawar'],
   },
   {
     title: 'Working Hours',
@@ -73,7 +74,7 @@ export default function ContactPage() {
       <PageHeroSection contentClassName="max-w-3xl flex flex-col gap-6 items-center text-center">
        
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight font-normal">
-          Let&apos;s Start a <span className="text-primary">Conversation</span>
+          Let&apos;s Start a <span className="text-primary font-bold">Conversation</span>
         </h1>
         <p className="text-neutral-400 text-lg sm:text-xl leading-relaxed">
           Have a project in mind? Or just want to talk tech? We&apos;re all ears.
@@ -104,9 +105,12 @@ export default function ContactPage() {
                 <h2 className="mt-4 text-xl text-white font-normal">{title}</h2>
                 <div className="mt-3 space-y-1">
                   {lines.map((line) => (
-                    <p key={line} className="text-neutral-400 text-sm">
-                      {line}
-                    </p>
+                    <ul key={line} className="text-neutral-400 text-sm">
+
+                      <li key={line} className="text-neutral-400 text-sm list-disc list-inside space-y-2">
+                        {line}
+                      </li>
+                    </ul>
                   ))}
                 </div>
               </motion.article>
